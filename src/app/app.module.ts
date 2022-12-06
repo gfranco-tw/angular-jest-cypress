@@ -10,12 +10,16 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatInputModule } from '@angular/material/input';
+import { MatCardModule } from '@angular/material/card';
 
 import { AllowNumbersOnly } from 'src/shared/directives/allownumbersonly.directive';
 
 @NgModule({
   declarations: [AppComponent, PasswordGeneratorComponent, AllowNumbersOnly],
-  imports: [BrowserModule, AppRoutingModule, FormsModule, BrowserAnimationsModule, MatButtonModule, MatIconModule, MatCheckboxModule],
+  imports: [BrowserModule,
+    AppRoutingModule, FormsModule, BrowserAnimationsModule, MatButtonModule, MatIconModule, MatCheckboxModule
+    , MatInputModule, MatCardModule],
   providers: [],
   bootstrap: [AppComponent],
 })
