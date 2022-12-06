@@ -33,16 +33,15 @@ export class PasswordGeneratorComponent {
   validateForm(): boolean{
     this.errorMessage = "";
     this.errorLength = "";
-    var isValid = false;
+    var isValid = true;
 
     if (this.generatePassword.length < this.generatePassword.minLength || this.generatePassword.length > 40) {
-      isValid = false;
+      isValid = false;      
       this.errorLength = "Please, length range should be between 4 and 40";
     }
 
-    if (this.generatePassword.useLetters || this.generatePassword.useNumbers || this.generatePassword.useSymbols) {
-      isValid = true;
-    } else {
+    if (!this.generatePassword.useLetters && !this.generatePassword.useNumbers && !this.generatePassword.useSymbols) {
+      isValid = false;
       this.errorMessage = "Please select at least one option";
     }
     return isValid;
