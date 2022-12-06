@@ -1,0 +1,23 @@
+.wrap-container {
+  margin: 0 auto;
+  max-width: 75rem;
+  padding: 0 1.5rem;
+}
+
+.main-container {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: stretch;
+  align-content: stretch;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+}
