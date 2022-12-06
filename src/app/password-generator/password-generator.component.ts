@@ -9,15 +9,17 @@ import { GeneratePasswordService } from '../data/generate-password.service';
   styleUrls: ['./password-generator.component.scss'],
 })
 export class PasswordGeneratorComponent {
-  text: String = '';
+  text: string = '';
   generatePassword: GeneratePassword = {
     length: 8,
-    useLetters: true,
+    useLetters: false,
     useNumbers: false,
     useSymbols: false,
     password: ""
   }
-
+  errorMessage: string = '';
+  
+  
   constructor(private generateService: GeneratePasswordService) {
     // this.text = 'Button was clicked';
   }
@@ -25,12 +27,25 @@ export class PasswordGeneratorComponent {
   generateClicked() {
     console.log(this.text);
   }
+
+  validateCheckboxes(): boolean{
+    this.errorMessage = "";
+    var isValid = false;
+    if (this.generatePassword.useLetters || this.generatePassword.useNumbers || this.generatePassword.useSymbols) {
+      isValid = true;
+    } else {
+      this.errorMessage = "Please select at least one option";
+    }
+    return isValid;
+  }
+
   onSubmit(form: NgForm) {
-    console.log('in onSubmit: ', form.valid);
-    if (form.valid) {
+    console.log('in onSubmit: ', form.valid, this.validateCheckboxes());
+    this.errorMessage = '';
+    if (form.valid && this.validateCheckboxes()) {
       this.generateService.getGeneratePassword(this.generatePassword).subscribe(
         result => console.log("password ==>", result)
       );
-    }
+    } 
   }
 }

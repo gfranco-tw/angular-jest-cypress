@@ -7,9 +7,11 @@ import { AppComponent } from './app.component';
 import { PasswordGeneratorComponent } from './password-generator/password-generator.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+import {MatButtonModule} from '@angular/material/button';
+
 @NgModule({
   declarations: [AppComponent, PasswordGeneratorComponent],
-  imports: [BrowserModule, AppRoutingModule, FormsModule, BrowserAnimationsModule],
+  imports: [BrowserModule, AppRoutingModule, FormsModule, BrowserAnimationsModule, MatButtonModule],
   providers: [],
   bootstrap: [AppComponent],
 })
