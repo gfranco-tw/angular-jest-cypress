@@ -15,9 +15,11 @@ export class PasswordGeneratorComponent {
     useLetters: false,
     useNumbers: false,
     useSymbols: false,
-    password: ""
+    password: "",
+    minLength:4
   }
   errorMessage: string = '';
+  errorLength: string = '';
   
   
   constructor(private generateService: GeneratePasswordService) {
@@ -28,9 +30,16 @@ export class PasswordGeneratorComponent {
     console.log(this.text);
   }
 
-  validateCheckboxes(): boolean{
+  validateForm(): boolean{
     this.errorMessage = "";
+    this.errorLength = "";
     var isValid = false;
+
+    if (this.generatePassword.length < this.generatePassword.minLength || this.generatePassword.length > 40) {
+      isValid = false;
+      this.errorLength = "Please, length range should be between 4 and 40";
+    }
+
     if (this.generatePassword.useLetters || this.generatePassword.useNumbers || this.generatePassword.useSymbols) {
       isValid = true;
     } else {
@@ -40,9 +49,9 @@ export class PasswordGeneratorComponent {
   }
 
   onSubmit(form: NgForm) {
-    console.log('in onSubmit: ', form.valid, this.validateCheckboxes());
+    console.log('in onSubmit: ', form.valid, this.validateForm());
     this.errorMessage = '';
-    if (form.valid && this.validateCheckboxes()) {
+    if (form.valid && this.validateForm()) {
       this.generateService.getGeneratePassword(this.generatePassword).subscribe(
         result => console.log("password ==>", result)
       );

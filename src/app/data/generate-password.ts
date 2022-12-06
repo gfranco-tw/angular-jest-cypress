@@ -3,5 +3,6 @@ export interface GeneratePassword{
     useLetters: boolean,
     useNumbers: boolean,
     useSymbols: boolean,
-    password: string
+    password: string,
+    minLength: number
 }

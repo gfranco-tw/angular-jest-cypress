@@ -7,11 +7,15 @@ import { AppComponent } from './app.component';
 import { PasswordGeneratorComponent } from './password-generator/password-generator.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import {MatButtonModule} from '@angular/material/button';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+
+import { AllowNumbersOnly } from 'src/shared/directives/allownumbersonly.directive';
 
 @NgModule({
-  declarations: [AppComponent, PasswordGeneratorComponent],
-  imports: [BrowserModule, AppRoutingModule, FormsModule, BrowserAnimationsModule, MatButtonModule],
+  declarations: [AppComponent, PasswordGeneratorComponent, AllowNumbersOnly],
+  imports: [BrowserModule, AppRoutingModule, FormsModule, BrowserAnimationsModule, MatButtonModule, MatIconModule, MatCheckboxModule],
   providers: [],
   bootstrap: [AppComponent],
 })
